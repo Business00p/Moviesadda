@@ -835,7 +835,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('• 𝗖𝗹𝗼𝘀𝗲 •', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(btn)
-        m=await query.message.reply_sticker("CAACAgQAAxkBAAEiLZ9l7VMuTY7QHn4edR6ouHUosQQ9gwACFxIAArzT-FOmYU0gLeJu7x4E") 
+        m=await query.message.reply_sticker("CAACAgUAAxkBAAIehme3G3vGWd3qPLNNhsWGN8Bq_A0_AAJrFQACrG95VaIaQqsKmaMeHgQ") 
         await m.delete()
         await query.message.reply_photo(
             photo=(SUBSCRIPTION),
@@ -1545,7 +1545,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             **locals()
         )
     else:
-        cap = f"<b>📂 ʜᴇʀᴇ ɪ ꜰᴏᴜɴᴅ ꜰᴏʀ ʏᴏᴜʀ sᴇᴀʀᴄʜ {search} \n\n <blockquote>⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️</blockquote> </b>"
+        cap = f"<b>📂 ʜᴇʀᴇ ɪ ꜰᴏᴜɴᴅ ꜰᴏʀ ʏᴏᴜʀ sᴇᴀʀᴄʜ {search} \n <blockquote>⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️</blockquote> </b>"
 
     ads, ads_name, _ = await mdb.get_advirtisment()
     ads_text = ""
