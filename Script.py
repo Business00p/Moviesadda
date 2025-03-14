@@ -113,7 +113,7 @@ User - {}"""
 ⭐ Rating: {rating} / 10</b>
 """
 
-    FILE_CAPTION = """<b>{file_name}\n\n𝖩𝗈𝗂𝗇➥ 『 <a href='https://t.me/faishonhub00'>𝗙𝗮𝗶𝘀𝗵𝗼𝗻 𝗛𝘂𝗯</a> 』 </b>"""
+    FILE_CAPTION = """<b>{file_name}\n\n𝖩𝗈𝗂𝗇➥ 『<a href='https://t.me/faishonhub00'>𝗙𝗮𝗶𝘀𝗵𝗼𝗻 𝗛𝘂𝗯</a>』</b>"""
     
 
     ALRT_TXT = """ᴊᴀʟᴅɪ ʏᴇʜᴀ sᴇ ʜᴀᴛᴏ !"""
