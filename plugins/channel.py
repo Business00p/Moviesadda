@@ -34,8 +34,7 @@ def name_format(file_name: str):
     return imdb_file_name
 
 async def get_imdb(file_name):
-    imdb_file_name = name_format(file_name)
-    imdb = await get_poster(imdb_file_name)
+    imdb_file_name = name_format(file_name)    
     if imdb:
         caption = script.MOVIES_UPDATE_TXT.format(
             title=imdb.get('title'),
