@@ -34,7 +34,8 @@ def name_format(file_name: str):
     return imdb_file_name
 
 async def get_imdb(file_name):
-    imdb_file_name = name_format(file_name)    
+    imdb_file_name = name_format(file_name)
+    imdb = await get_poster(imdb_file_name)
     if imdb:
         caption = script.MOVIES_UPDATE_TXT.format(
             title=imdb.get('title'),
@@ -43,15 +44,15 @@ async def get_imdb(file_name):
             year=imdb.get('year')
             
         )
-        return imdb.get('title'), caption
+        return imdb.get('title'), imdb.get('poster'), caption
     return None, None, None
 
 async def send_movie_updates(bot, file_name, file_id):
-    imdb_title, caption = await get_imdb(file_name)
+    imdb_title, poster_url, caption = await get_imdb(file_name)
     if imdb_title in processed_movies:
         return
     processed_movies.add(imdb_title)
-    if not caption:
+    if not poster_url or not caption:
         return
     btn = [
         [InlineKeyboardButton('🔰𝗠𝗼𝘃𝗶𝗲 𝗦𝗲𝗮𝗿𝗰𝗵 𝗚𝗿𝗼𝘂𝗽🔰', url=f'https://t.me/publicgeoup0')]
@@ -59,7 +60,7 @@ async def send_movie_updates(bot, file_name, file_id):
     reply_markup = InlineKeyboardMarkup(btn)
     movie_update_channel =await db.movies_update_channel_id()
     try:
-        await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, caption=caption, reply_markup=reply_markup)
+        await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, photo=poster_url, caption=caption, reply_markup=reply_markup)
     except Exception as e:
         print('Failed to send movie update. Error - ', e)
         await bot.send_message(LOG_CHANNEL, f'Failed to send movie update. Error - <code>{e}</b>')
