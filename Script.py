@@ -201,10 +201,11 @@ User - {}"""
 #verified_{}_completed"""
 
 
-    MOVIES_UPDATE_TXT = """<b>
-{Search} - Is Now Available ‼️
-
-<blockquote>📌 Note : If You Need To Get All Quality Files , Please Copy The Above Movie Name And Paste It Into The Below Movie Search Group 🔰.</blockquote>
+    MOVIES_UPDATE_TXT = """<b>#𝑵𝒆𝒘_𝑭𝒊𝒍𝒆_𝑨𝒅𝒅𝒆𝒅 ✅
+**🍿 Title:** {title}
+**🎃 Genres:** {genres}
+**📆 Year:** {year}
+**⭐ Rating:** {rating} / 10
 </b>"""
 
     PREPLANS_TXT = """<b>👋 ʜᴇʏ {},
