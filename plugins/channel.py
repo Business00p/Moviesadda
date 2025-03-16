@@ -38,9 +38,11 @@ async def get_imdb(file_name):
     imdb = await get_poster(imdb_file_name)
     if imdb:
         caption = script.MOVIES_UPDATE_TXT.format(
-            {Search} - Is Now Available ‼️
-
-<blockquote>📌 Note : If You Need To Get All Quality Files , Please Copy The Above Movie Name And Paste It Into The Below Movie Search Group 🔰.</blockquote>
+            title=imdb.get('title'),
+            rating=imdb.get('rating'),
+            genres=imdb.get('genres'),
+            year=imdb.get('year')
+            
         )
         return imdb.get('title'), imdb.get('poster'), caption
     return None, None, None
