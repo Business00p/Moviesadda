@@ -813,7 +813,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                 InlineKeyboardButton('☆ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ☆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
                 ],[
-                InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data=f'features'),
+                InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data='freee'),
                 InlineKeyboardButton('Aʙᴏᴜᴛ 💌', callback_data=f'about')
                 ],[
                 InlineKeyboardButton('Pʀᴇᴍɪᴜᴍ 🎫', callback_data='seeplans'),
@@ -905,7 +905,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "verifyon":
         await query.answer(f'Only the bot admin can ᴏɴ ✓ or ᴏғғ ✗ this feature.', show_alert=True)
     
-    elif query.data == "features":
+    elif query.data == "freee":
         buttons = [[
               InlineKeyboardButton('Aᴅᴍɪɴ Cᴏᴍᴍᴀɴᴅs', callback_data='admincmd'),
               InlineKeyboardButton('Iᴍᴀɢᴇ Tᴏ Lɪɴᴋ', callback_data='telegraph'),
@@ -1064,8 +1064,29 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.FONT_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
-	)
+	)	 
   
+    elif query.data == "freee":
+        buttons = [[
+            InlineKeyboardButton('☆📸 𝙎𝙚𝙣𝙙 𝙨𝙘𝙧𝙚𝙚𝙣𝙨𝙝𝙤𝙩 📸☆', url=f'https://t.me/TvShOw076')
+        ],[
+            InlineKeyboardButton('💎 𝗖𝘂𝘀𝘁𝗼𝗺 𝗣𝗹𝗮𝗻 💎', callback_data='fsub')
+        ],[
+            InlineKeyboardButton('• 𝗕𝗮𝗰𝗸 •', callback_data='telegraph'),
+            InlineKeyboardButton('• 𝗖𝗹𝗼𝘀𝗲 •', callback_data='close_data')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)             
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto(random.choice(PAYPICS))
+        )
+        await query.message.edit_text(
+            text=script.HELP_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )   
+
 
     elif query.data == "all_files_delete":
         files = await Media.count_documents()
