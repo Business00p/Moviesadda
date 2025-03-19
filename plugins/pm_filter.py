@@ -813,7 +813,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                 InlineKeyboardButton('☆ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ☆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
                 ],[
-                InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data='custom'),
+                InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data='earn'),
                 InlineKeyboardButton('Aʙᴏᴜᴛ 💌', callback_data=f'about')
                 ],[
                 InlineKeyboardButton('Pʀᴇᴍɪᴜᴍ 🎫', callback_data='seeplans'),
@@ -1039,7 +1039,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
           message_id=query.message.id,
           media=InputMediaAnimation(
             media="https://cdn.jsdelivr.net/gh/Jisshubot/JISSHU_BOTS/Video.mp4/Group_20240921_202540_0001.gif",
-            caption=script.GROUP_TEXT.format(temp.B_LINK),
+            caption=script.HELP_TXT.format(temp.B_LINK),
             parse_mode=enums.ParseMode.HTML
         ),
         reply_markup=reply_markup
@@ -1066,7 +1066,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
 	)	 
   
-    elif query.data == "custom":
+    elif query.data == "earn":
         buttons = [[
             InlineKeyboardButton('☆📸 𝙎𝙚𝙣𝙙 𝙨𝙘𝙧𝙚𝙚𝙣𝙨𝙝𝙤𝙩 📸☆', url=f'https://t.me/TvShOw076')
         ],[
@@ -1082,7 +1082,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InputMediaPhoto(random.choice(PAYPICS))
         )
         await query.message.edit_text(
-            text=script.ABOUT_TEXT.format(query.from_user.mention),
+            text=script.HELP_TXT.format(query.from_user.mention),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )   
