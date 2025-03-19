@@ -919,7 +919,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(buttons)
     
         await query.message.edit_text(
-            caption=script.HELP_TXT,
+            text=script.HELP_TXT,
 	    reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML 
 	)
