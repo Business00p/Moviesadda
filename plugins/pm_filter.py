@@ -813,7 +813,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                 InlineKeyboardButton('☆ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ☆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
                 ],[
-                InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data='freee'),
+                InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data='free'),
                 InlineKeyboardButton('Aʙᴏᴜᴛ 💌', callback_data=f'about')
                 ],[
                 InlineKeyboardButton('Pʀᴇᴍɪᴜᴍ 🎫', callback_data='seeplans'),
@@ -905,7 +905,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "verifyon":
         await query.answer(f'Only the bot admin can ᴏɴ ✓ or ᴏғғ ✗ this feature.', show_alert=True)
     
-    elif query.data == "freee":
+    elif query.data == "free":
         buttons = [[
               InlineKeyboardButton('Aᴅᴍɪɴ Cᴏᴍᴍᴀɴᴅs', callback_data='admincmd'),
               InlineKeyboardButton('Iᴍᴀɢᴇ Tᴏ Lɪɴᴋ', callback_data='telegraph'),
@@ -1066,7 +1066,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
 	)	 
   
-    elif query.data == "freee":
+    elif query.data == "free":
         buttons = [[
             InlineKeyboardButton('☆📸 𝙎𝙚𝙣𝙙 𝙨𝙘𝙧𝙚𝙚𝙣𝙨𝙝𝙤𝙩 📸☆', url=f'https://t.me/TvShOw076')
         ],[
