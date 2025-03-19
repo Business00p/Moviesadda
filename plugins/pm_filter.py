@@ -813,7 +813,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                 InlineKeyboardButton('☆ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ☆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
                 ],[
-                InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data='earn'),
+                InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data='features'),
                 InlineKeyboardButton('Aʙᴏᴜᴛ 💌', callback_data=f'about')
                 ],[
                 InlineKeyboardButton('Pʀᴇᴍɪᴜᴍ 🎫', callback_data='seeplans'),
@@ -905,7 +905,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "verifyon":
         await query.answer(f'Only the bot admin can ᴏɴ ✓ or ᴏғғ ✗ this feature.', show_alert=True)
     
-    elif query.data == "custom":
+    elif query.data == "features":
         buttons = [[
               InlineKeyboardButton('Aᴅᴍɪɴ Cᴏᴍᴍᴀɴᴅs', callback_data='admincmd'),
               InlineKeyboardButton('Iᴍᴀɢᴇ Tᴏ Lɪɴᴋ', callback_data='telegraph'),
@@ -918,14 +918,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
         reply_markup = InlineKeyboardMarkup(buttons)
     
-        await query.message.edit_media(
-            media=InputMediaPhoto(
-            media=START_IMG,
+        await query.message.edit_text(
             caption=script.HELP_TXT,
+	    reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML 
-            ),
-            reply_markup=reply_markup
 	)
+            	
       #  await query.message.edit_text(
       #      text=script.HELP_TXT,
       #      reply_markup=reply_markup,
