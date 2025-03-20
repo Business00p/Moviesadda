@@ -40,7 +40,7 @@ async def get_imdb(file_name):
         caption = script.MOVIES_UPDATE_TXT.format(
             text=imdb.get('text')       
         )
-        return imdb.get('title'), imdb.get('poster'), caption
+        return imdb.get('text'), imdb.get('poster'), caption
     return None, None, None
 
 async def send_movie_updates(bot, file_name, file_id):
