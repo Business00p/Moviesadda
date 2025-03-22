@@ -201,11 +201,8 @@ User - {}"""
 #verified_{}_completed"""
 
 
-    MOVIES_UPDATE_TXT = """<b>
-{files.file_name[:20]} Hindi hdrip - Is Now Available ‼️
+    MOVIES_UPDATE_TXT = """<b> {files.file_name[:20]} Hindi hdrip - Is Now Available ‼️<blockquote>📌 Note : If You Need To Get All Quality Files , Please Copy The Above Movie Name And Paste It Into The Below Movie Search Group 🔰.</blockquote> </b>"""
 
-<blockquote>📌 Note : If You Need To Get All Quality Files , Please Copy The Above Movie Name And Paste It Into The Below Movie Search Group 🔰.</blockquote>
-</b>"""
 
     PREPLANS_TXT = """<b>👋 ʜᴇʏ {},
 
