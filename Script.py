@@ -202,7 +202,7 @@ User - {}"""
 
 
     MOVIES_UPDATE_TXT = """<b>
-{title} Hindi hdrip - Is Now Available ‼️
+{files.file_name[:20]} Hindi hdrip - Is Now Available ‼️
 
 <blockquote>📌 Note : If You Need To Get All Quality Files , Please Copy The Above Movie Name And Paste It Into The Below Movie Search Group 🔰.</blockquote>
 </b>"""
