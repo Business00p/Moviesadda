@@ -1,4 +1,3 @@
-
 import asyncio
 import re
 import math
@@ -198,12 +197,7 @@ async def next_page(bot, query):
 	InlineKeyboardButton("ꜱᴇᴀꜱᴏɴ", callback_data=f"seasons#{key}#{offset}#{req}"),
         InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇ ", callback_data=f"languages#{key}#{offset}#{req}")
     ])    
-    btn.extend([
-    [BotCommand("Demo button", callback_data="Check Available Premium Membership Plans")],
-    [BotCommand("amrit", callback_data="Show Most Searches List")]
-])
-    keyboard = InlineKeyboardMarkup(btn)
-	
+
     if 0 < offset <= int(MAX_BTN):
         off_set = 0
     elif offset == 0:
@@ -336,12 +330,7 @@ async def season_search(client: Client, query: CallbackQuery):
 	InlineKeyboardButton("ꜱᴇᴀꜱᴏɴ", callback_data=f"seasons#{key}#{offset}#{req}"),
         InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇ ", callback_data=f"languages#{key}#{offset}#{req}")
     ])    
-    btn.extend([
-    [BotCommand("Demo button", callback_data="Check Available Premium Membership Plans")],
-    [BotCommand("amrit", callback_data="Show Most Searches List")]
-])
-    keyboard = InlineKeyboardMarkup(btn)
-	
+    
     if n_offset== '':
         btn.append(
             [InlineKeyboardButton(text="🚸 ɴᴏ ᴍᴏʀᴇ ᴘᴀɢᴇs 🚸", callback_data="buttons")]
@@ -441,19 +430,14 @@ async def year_search(client: Client, query: CallbackQuery):
         
    
     btn.insert(0,[
-	InlineKeyboardButton("📥 𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀 📥", callback_data="seeplans"),
+	InlineKeyboardButton("📥 𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀 📥", callback_data=batch_link),
         ])
     btn.insert(1, [
         InlineKeyboardButton("ǫᴜᴀʟɪᴛʏ ", callback_data=f"qualities#{key}#{offset}#{req}"),
 	InlineKeyboardButton("ꜱᴇᴀꜱᴏɴ", callback_data=f"seasons#{key}#{offset}#{req}"),
         InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇ ", callback_data=f"languages#{key}#{offset}#{req}")
-    ]) 
-    btn.extend([
-    [BotCommand("Demo button", callback_data="Check Available Premium Membership Plans")],
-    [BotCommand("amrit", callback_data="Show Most Searches List")]
-])
-    keyboard = InlineKeyboardMarkup(btn)
-	
+    ])    
+    
     if n_offset== '':
         btn.append(
             [InlineKeyboardButton(text="🚸 ɴᴏ ᴍᴏʀᴇ ᴘᴀɢᴇs 🚸", callback_data="buttons")]
@@ -552,19 +536,13 @@ async def quality_search(client: Client, query: CallbackQuery):
         
  
     btn.insert(0,[
-	InlineKeyboardButton("📥 𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀 📥", callback_data="seeplans"),
+	InlineKeyboardButton("📥 𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀 📥", callback_data=batch_link),
         ])
     btn.insert(1, [
         InlineKeyboardButton("ǫᴜᴀʟɪᴛʏ", callback_data=f"qualities#{key}#{offset}#{req}"),
 	InlineKeyboardButton("ꜱᴇᴀꜱᴏɴ", callback_data=f"seasons#{key}#{offset}#{req}"),
         InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇ", callback_data=f"languages#{key}#{offset}#{req}"),
-    ])  
-    btn.extend([
-    [BotCommand("Demo button", callback_data="Check Available Premium Membership Plans")],
-    [BotCommand("amrit", callback_data="Show Most Searches List")]
-])
-    keyboard = InlineKeyboardMarkup(btn)
-	
+    ])    
     if n_offset== '':
         btn.append(
             [InlineKeyboardButton(text="🚸 ɴᴏ ᴍᴏʀᴇ ᴘᴀɢᴇs 🚸", callback_data="buttons")]
@@ -669,18 +647,13 @@ async def lang_search(client: Client, query: CallbackQuery):
         
 
     btn.insert(0,[
-	InlineKeyboardButton("📥 𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀 📥", callback_data="seeplans"),
+	InlineKeyboardButton("📥 𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀 📥", callback_data=batch_link),
         ])
     btn.insert(1, [
         InlineKeyboardButton("ǫᴜᴀʟɪᴛʏ", callback_data=f"qualities#{key}#{offset}#{req}"),
 	InlineKeyboardButton("ꜱᴇᴀꜱᴏɴ", callback_data=f"seasons#{key}#{offset}#{req}"),
         InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇ", callback_data=f"languages#{key}#{offset}#{req}")
-    ])  
-    btn.extend([
-    [BotCommand("Demo button", callback_data="Check Available Premium Membership Plans")],
-    [BotCommand("amrit", callback_data="Show Most Searches List")]
-])	
-    keyboard = InlineKeyboardMarkup(btn)	
+    ])    
     if n_offset== '':
         btn.append(
             [InlineKeyboardButton(text="🚸 ɴᴏ ᴍᴏʀᴇ ᴘᴀɢᴇs 🚸", callback_data="buttons")]
@@ -861,18 +834,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('• 𝗖𝗹𝗼𝘀𝗲 •', callback_data='close_data')
         ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PAYPICS))
-        )
-        await query.message.edit_text(
-            text=script.PREPLANS_TXT.format(query.from_user.mention),
+        reply_markup = InlineKeyboardMarkup(btn)
+        m=await query.message.reply_sticker("CAACAgQAAxkBAAEiLZ9l7VMuTY7QHn4edR6ouHUosQQ9gwACFxIAArzT-FOmYU0gLeJu7x4E") 
+        await m.delete()
+        await query.message.reply_photo(
+            photo=(SUBSCRIPTION),
+            caption=script.PREPLANS_TXT.format(query.from_user.mention),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
 	)
-
     elif query.data == "free":
         buttons = [[
             InlineKeyboardButton('☆📸 𝙎𝙚𝙣𝙙 𝙨𝙘𝙧𝙚𝙚𝙣𝙨𝙝𝙤𝙩 📸☆', url=f'https://t.me/innocent_babe_dead')
@@ -910,6 +880,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
          ),
          reply_markup=reply_markup
        )
+        
+    elif query.data == "other":
         buttons = [[
             InlineKeyboardButton('☎️ 𝗖𝗼𝗻𝘁𝗮𝗰𝘁 𝗢𝘄𝗻𝗲𝗿 𝗧𝗼 𝗞𝗻𝗼𝘄 𝗠𝗼𝗿𝗲', user_id = ADMINS[0])
         ],[
@@ -946,14 +918,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
         reply_markup = InlineKeyboardMarkup(buttons)
     
-        await query.message.edit_media(
-            media=InputMediaPhoto(
-            media=START_IMG,
-            caption=script.HELP_TXT,
-            parse_mode=enums.ParseMode.HTML 
-            ),
-            reply_markup=reply_markup
-	)
+        await query.message.edit_text(
+            text=script.HELP_TXT,
+	    reply_markup=replrkup,
+            parse_mode=enums.ParseMy_maode.HTML 
+            )
       #  await query.message.edit_text(
       #      text=script.HELP_TXT,
       #      reply_markup=reply_markup,
@@ -1495,18 +1464,13 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
     if offset != "":
         if total_results >= MAX_BTN:
             btn.insert(0,[
-                InlineKeyboardButton("📥 𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀 📥", callback_data="seeplans"),
+                InlineKeyboardButton("📥 𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀 📥", callback_data=batch_link),
             ])
             btn.insert(1, [
                 InlineKeyboardButton("ǫᴜᴀʟɪᴛʏ ", callback_data=f"qualities#{key}#{offset}#{req}"),
                 InlineKeyboardButton("ꜱᴇᴀꜱᴏɴ", callback_data=f"seasons#{key}#{offset}#{req}"),
                 InlineKeyboardButton("ʟᴀɴɢᴜᴀɢᴇ ", callback_data=f"languages#{key}#{offset}#{req}")
-            ])   
-            btn.extend([
-    [BotCommand("Demo button", callback_data="Check Available Premium Membership Plans")],
-    [BotCommand("amrit", callback_data="Show Most Searches List")]
-])   
-            keyboard = InlineKeyboardMarkup(btn)	  
+            ])            
         else:
             btn.insert(0,[
                 InlineKeyboardButton("📥 𝗦𝗲𝗻𝗱 𝗔𝗹𝗹 𝗙𝗶𝗹𝗲𝘀 📥", callback_data=batch_link),
