@@ -1,31 +1,64 @@
-from info import AUTH_CHANNEL
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.errors import *
+from pyrogram import Client, filters, enums
+from pyrogram.types import ChatJoinRequest
+from database.users_chats_db import db
+from info import ADMINS, AUTH_CHANNEL
+from utils import is_check_admin
+import logging  
+logger = logging.getLogger(__name__)
 
-async def is_subscribed(bot, query, channel):
-    btn = []
-    for id in channel:
-        chat = await bot.get_chat(int(id))
-        try:
-            await bot.get_chat_member(id, query.from_user.id)
-        except UserNotParticipant:
-            btn.append([InlineKeyboardButton(f'Join {chat.title}', url=chat.invite_link)])
-        except Exception as e:
-            pass
-    return btn
 
-#@Client.on_message.....
-#async def start(....
-    if AUTH_CHANNEL:
-        try:
-            btn = await is_subscribed(client, message, AUTH_CHANNEL)
-            if btn:
-                username = (await client.get_me()).username
-                if message.command[1]:
-                    btn.append([InlineKeyboardButton("â™»ï¸ Try Again â™»ï¸", url=f"https://t.me/{username}?start={message.command[1]}")])
-                else:
-                    btn.append([InlineKeyboardButton("â™»ï¸ Try Again â™»ï¸", url=f"https://t.me/{username}?start=true")])
-                await message.reply_text(text=f"<b>ðŸ‘‹ Hello {message.from_user.mention},\n\nPlease join the channel then click on try again button. ðŸ˜‡</b>", reply_markup=InlineKeyboardMarkup(btn))
-                return
-        except Exception as e:
-            print(e)
+@Client.on_message(filters.command("fsub"))
+async def force_subscribe(client, message):
+    m = await message.reply_text("Wait im checking...")
+    if not message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await m.edit("This command is only for groups!")
+    if not await is_check_admin(client, message.chat.id, message.from_user.id):
+        return await m.edit("Only group admins can use this command!")
+    try: 
+        toFsub = message.command[1]
+    except IndexError:
+        return await m.edit("Usage: /fsub CHAT_ID")
+    if not toFsub.startswith("-100"):
+        toFsub = '-100'+toFsub
+    if not toFsub[1:].isdigit() or len(toFsub) != 14:
+        return await m.edit("CHAT_ID isn't valid!")
+    toFsub = int(toFsub)
+    if toFsub == message.chat.id:
+        return await m.edit("It seems like you're attempting to enable force subscription for this chat ID. Please use a different chat ID !")
+    if not await is_check_admin(client, toFsub, client.me.id):
+        return await m.edit("I need to be an admin in the given chat to perform this action!\nMake me admin in your Target chat and try again.")
+    try:
+        await db.setFsub(grpID=message.chat.id, fsubID=toFsub)
+        return await m.edit(f"Successfully added force subscribe to {toFsub} in {message.chat.title}")
+    except Exception as e:
+        logger.exception(e)
+        return await m.edit(f"Something went wrong ! Try again later or report in Support Group @Jisshu_support")
+
+@Client.on_message(filters.command("del_fsub"))
+async def del_force_subscribe(client, message):
+    m = await message.reply_text("Wait im checking...")
+    if not message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await m.edit("This command is only for groups!")
+    if not await is_check_admin(client, message.chat.id, message.from_user.id):
+        return await m.edit("Only group admins can use this command!")
+    ifDeleted =await db.delFsub(message.chat.id)
+    if ifDeleted:
+        return await m.edit(f"Successfully removed force subscribe for - {message.chat.title}\nTo add again use <code>/fsub YOUR_FSUB_CHAT_ID</code>")
+    else:
+        return await m.edit(f"Force subscribe not found in {message.chat.title}")
+
+@Client.on_message(filters.command("show_fsub"))
+async def show_fsub(client, message):
+    m = await message.reply_text("Wait im checking...")
+    if not message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await m.edit("This command is only for groups!")
+    # check if commad is given by admin or not
+    if not await is_check_admin(client, message.chat.id, message.from_user.id):
+        return await m.edit("Only group admins can use this command!")
+    fsub = await db.getFsub(message.chat.id)
+    if fsub:
+        #now gen a invite link
+        invite_link = await client.export_chat_invite_link(fsub)
+        await m.edit(f"Force subscribe is set to {fsub}\n<a href={invite_link}>Channel Link Link</a>" ,disable_web_page_preview=True)
+    else:
+        await m.edit(f"Force subscribe is not set in {message.chat.title}")
